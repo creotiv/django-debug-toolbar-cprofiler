@@ -1,0 +1,42 @@
+{% load i18n %}{% load static from staticfiles %}
+<link rel="stylesheet" href="{% static 'js/table_sort/themes/blue/style.css' %}" type="text/css"/>
+<table width="100%" class="tablesorter">
+	<thead>
+		<tr>
+			<th width="50%">{% trans "Call" %}</th>
+            <th>{% trans "Count" %}</th>
+			<th>{% trans "TotTime" %}</th>
+			<th>{% trans "Per" %}</th>
+			<th>{% trans "CumTime" %}</th>
+			<th>{% trans "Per" %}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for call in func_list %}
+			<tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+				<td>
+                    {% if call.filename %}
+					    {{call.filename}}:{{call.line}} ({{call.function}})
+                    {% else %}
+					    { {{call.function}} }
+                    {% endif %}
+                </td>
+                <td>{{ call.count }}</td>
+				<td>{{ call.tottime|floatformat:3 }}</td>
+				<td>{{ call.tottime_per_call|floatformat:3 }}</td>
+				<td>{{ call.cumtime|floatformat:3 }}</td>
+				<td>{{ call.cumtime_per_call|floatformat:3 }}</td>
+				
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+	
+	
+<script type="text/javascript" src="{% static 'js/table_sort/jquery.tablesorter.min.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("table").tablesorter();
+}); 
+</script>
