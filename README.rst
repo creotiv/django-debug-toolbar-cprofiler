@@ -28,7 +28,7 @@ Add to the debug toolbar panels:
        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
        'debug_toolbar.panels.templates.TemplatesPanel',
        'debug_toolbar.panels.cache.CachePanel',
-       'debug_toolbar_cprofiler.profiler.CProfilerPanel', # here it is
+       'debug_toolbar_cprofiler.profiler.CProfilerPanel',
        'debug_toolbar.panels.signals.SignalsPanel',
        'debug_toolbar.panels.logging.LoggingPanel',
        'debug_toolbar.panels.redirects.RedirectsPanel',
